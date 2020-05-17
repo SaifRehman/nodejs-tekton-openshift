@@ -1,0 +1,7 @@
+{
+    "auths": {
+      "docker-registry.default.svc.cluster.local:5000": {
+        "auth": "c2E6ZXlKaGJHY2lPaUp<...skipped many lines ...>"
+      }
+    }
+  }
