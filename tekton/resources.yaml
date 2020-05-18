@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-source
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/SaifRehman/nodejs-tekton-openshift.git
+    - name: revision
+      value: master
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: nodejs-registry-image
+spec:
+  type: image
+  params:
+    - name: url
+      value: image-registry.openshift-image-registry.svc.cluster.local:5000/test/nodejs

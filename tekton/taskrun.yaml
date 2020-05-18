@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: ndoejs 
+spec:
+  resources:
+    inputs:
+      - name: git-source
+        resourceRef:
+          name: git-source
+      - name: nodejs-registry-image
+        resourceRef:
+          name: nodejs-registry-image
+  taskRef:
+    name: nodejs-build-with-kaniko
