@@ -24,7 +24,6 @@ spec:
   steps:
     - name: build-and-push
       image: gcr.io/kaniko-project/executor:debug
-      # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
       securityContext:
         runAsUser: 0
       volumeMounts:
@@ -40,6 +39,13 @@ spec:
         - --destination=image-registry.openshift-image-registry.svc.cluster.local:5000/test/nodejs:latest
         - --context=$(inputs.params.pathToContext)
         - --skip-tls-verify
+    - name: run-image
+      image: ebits/openshift-client
+      command: ["oc"]
+      args:
+        - apply
+        - -f
+        - $(inputs.params.pathToContext)/kubernetes/
   volumes:
     - name: docker-config
       configMap: 
