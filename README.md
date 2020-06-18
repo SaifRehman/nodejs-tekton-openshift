@@ -70,3 +70,16 @@ echo "sa:$token" | base64
 ```
 $ kubectl -n test create configmap docker-config --from-file=config.json=docker.config.json
 ```
+4. Apply tekton yaml
+
+```
+$ kubectl apply -f resources.yaml
+$ kubectl apply -f task.yaml
+$ kubectl apply -f pipeline.yaml
+$ kubectl apply -f pipelinerun.yaml
+```
+
+5. Open openshift dashboard and navigate to pipeline and then pipeline run to see the running pipeline
+
+![1](./1.png)
+
