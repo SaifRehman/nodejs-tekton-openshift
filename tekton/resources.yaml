@@ -13,9 +13,13 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: nodejs-registry-image
+  name: image-resource
 spec:
   type: image
   params:
     - name: url
-      value: image-registry.openshift-image-registry.svc.cluster.local:5000/test/nodejs
+      value: image-registry.openshift-image-registry.svc.cluster.local:5000/test
+
+
+
+      

@@ -1,0 +1,47 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: build-docker-image-from-git-source
+spec:
+  inputs:
+    resources:
+      - name: nodejs-tekton-openshift-resources
+        type: git
+    params:
+      - name: pathToDockerFile
+        type: string
+        description: The path to the dockerfile to build
+        default: /workspace/nodejs-tekton-openshift-resources/Dockerfile
+      - name: pathToContext
+        type: string
+        description:
+          The build context used by Kaniko
+          (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+        default: /workspace/nodejs-tekton-openshift-resources
+  outputs:
+    resources:
+      - name: builtImage
+        type: image
+  steps:
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor:debug
+      # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
+      securityContext:
+        runAsUser: 0
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker
+      env:
+        - name: "DOCKER_CONFIG"
+          value: "/builder/home/.docker"
+      command:
+        - /kaniko/executor
+      args:
+        - --dockerfile=$(inputs.params.pathToDockerFile)
+        - --destination=$(outputs.resources.builtImage.url)
+        - --context=$(inputs.params.pathToContext)
+        - --skip-tls-verify
+  volumes:
+    - name: docker-config
+      configMap: 
+        name: docker-config

@@ -1,15 +1,22 @@
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1alpha1
 kind: TaskRun
 metadata:
-  name: ndoejs 
+  name: build-docker-image-from-git-source-task-run
 spec:
-  resources:
-    inputs:
-      - name: git-source
+  taskRef:
+    name: build-docker-image-from-git-source
+  inputs:
+    resources:
+      - name: nodejs-tekton-openshift-resources
         resourceRef:
           name: git-source
-      - name: nodejs-registry-image
+    params:
+      - name: pathToDockerFile
+        value: Dockerfile
+      - name: pathToContext
+        value: /workspace/nodejs-tekton-openshift-resources
+  outputs:
+    resources:
+      - name: builtImage
         resourceRef:
-          name: nodejs-registry-image
-  taskRef:
-    name: nodejs-build-with-kaniko
+          name: image-resource
