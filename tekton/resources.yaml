@@ -18,4 +18,4 @@ spec:
   type: image
   params:
     - name: url
-      value: image-registry.openshift-image-registry.svc.cluster.local:5000/test
+      value: image-registry.openshift-image-registry.svc.cluster.local:5000/nodejs

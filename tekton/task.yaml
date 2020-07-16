@@ -36,7 +36,7 @@ spec:
         - /kaniko/executor
       args:
         - --dockerfile=$(inputs.params.pathToDockerFile)
-        - --destination=image-registry.openshift-image-registry.svc.cluster.local:5000/test/nodejs:latest
+        - --destination=image-registry.openshift-image-registry.svc.cluster.local:5000/nodejs/nodejs:latest
         - --context=$(inputs.params.pathToContext)
         - --skip-tls-verify
     - name: run-image
