@@ -3,7 +3,7 @@ kind: DeploymentConfig
 metadata:
   name: nodejsdc
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: Recreate
   template:

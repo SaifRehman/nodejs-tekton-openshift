@@ -1,0 +1,20 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: tektonnodejs-build-and-deploy
+spec:
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      name: nodejs-pipeline-run
+    spec:
+      pipelineRef:
+        name: nodejs-pipeline
+      resources:
+        - name: source-repo
+          resourceRef:
+            name: git-source
+        - name: web-image
+          resourceRef:
+            name: image-resource

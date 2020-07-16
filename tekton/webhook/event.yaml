@@ -1,0 +1,25 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: tektonnodejs
+spec:
+  serviceAccountName: pipeline
+  triggers:
+  - name: pullrequest-build-and-deploy
+    template:
+      name: tektonnodejs-build-and-deploy
+    bindings:
+    - name: tektonnodejs-build-and-deploy
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    eventlistener: tektonnodejs
+  name: el-tektonnodejs
+spec:
+  port:
+    targetPort: http-listener
+  to:
+    kind: Service
+    name: el-tektonnodejs
