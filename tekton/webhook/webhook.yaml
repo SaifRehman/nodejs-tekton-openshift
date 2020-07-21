@@ -3,18 +3,51 @@ kind: TriggerTemplate
 metadata:
   name: tektonnodejs-build-and-deploy
 spec:
+  params:
+  - name: URL
+    description: The repository url to build and deploy.
+  - name: REVISION
+    description: The revision to build and deploy.
+  - name: NAMESPACE
+    description: The namespace is used by OpenShift's internal image registry to store the built image.
+  - name: NAME
+    description: replace name
   resourcetemplates:
-  - apiVersion: tekton.dev/v1beta1
+  - apiVersion: tekton.dev/v1alpha1
     kind: PipelineRun
     metadata:
-      name: nodejs-pipeline-run
+      generateName: tekton-pipelinerun-build-and-deploy-
+      labels:
+        tekton.dev/pipeline: build-and-deploy-pipeline-kaniko
     spec:
+      params:
+        - name: pathToContext
+          value: .
+        - name: pathToYamlFile
+          value: kubernetes/
+        - name: imageUrl
+          value: image-registry.openshift-image-registry.svc:5000/nodejs/nodejs
+        - name: imageTag
+          value: $(params.REVISION)
+        - name: replaceName
+          value: $(params.NAME)
       pipelineRef:
-        name: nodejs-pipeline
+        name: build-and-deploy-pipeline-kaniko
       resources:
-        - name: source-repo
+        - name: git-source
           resourceRef:
-            name: git-source
-        - name: web-image
-          resourceRef:
-            name: image-resource
+            name: nodejs-git
+      serviceAccountName: pipeline
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: tektonnodejs-build-and-deploy
+spec:
+  params:
+  - name: REVISION
+    value: $(body.head_commit.id)
+  - name: NAMESPACE
+    value: ace
+  - name: NAME
+    value: acenew

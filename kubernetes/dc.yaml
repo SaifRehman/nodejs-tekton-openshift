@@ -12,7 +12,7 @@ spec:
         app: "dev"
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc.cluster.local:5000/nodejs/nodejs:latest
+        - image: __IMAGE__
           imagePullPolicy: Always
           name: nodejs
           ports:
