@@ -82,3 +82,5 @@ $ kubectl apply -f pipelinerun.yaml
 5. Open openshift dashboard and navigate to pipeline and then pipeline run to see the running pipeline
 
 ![1](./1.png)
+
+
