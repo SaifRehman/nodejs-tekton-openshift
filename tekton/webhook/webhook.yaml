@@ -48,6 +48,6 @@ spec:
   - name: REVISION
     value: $(body.head_commit.id)
   - name: NAMESPACE
-    value: ace
+    value: nodejs
   - name: NAME
-    value: acenew
+    value: nodejs
