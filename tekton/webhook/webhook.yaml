@@ -46,7 +46,7 @@ metadata:
 spec:
   params:
   - name: REVISION
-    value: newvv
+    value: $(body.head_commit.id)
   - name: NAMESPACE
     value: nodejs
   - name: NAME
