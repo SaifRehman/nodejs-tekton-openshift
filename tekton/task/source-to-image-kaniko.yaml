@@ -51,7 +51,7 @@ spec:
         - -c
       args:
         - npm test
-      workingDir: /workspace/nuxt-repo
+      workingDir: /workspace/git-source/
     - name: build-and-push
       image: gcr.io/kaniko-project/executor
       securityContext:
