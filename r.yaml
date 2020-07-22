@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: tektoncd-nodejs-tutorial-route
+spec:
+  port:
+    targetPort: 3000
+  to:
+    kind: Service
+    name: nodejs-service

@@ -20,6 +20,38 @@ spec:
         description: Tag to apply to the built image
         default: "latest"
   steps:
+    - name: npm-install
+      image: node
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - npm install
+      workingDir: /workspace/git-source/
+    - name: npm-audit
+      image: node
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - npm audit
+      workingDir: /workspace/git-source/
+    - name: lint
+      image: node
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - ./node_modules/eslint/bin/eslint.js app.js
+      workingDir: /workspace/git-source/
+    - name: test
+      image: node
+      command:
+        - /bin/sh
+        - -c
+      args:
+        - npm test
+      workingDir: /workspace/nuxt-repo
     - name: build-and-push
       image: gcr.io/kaniko-project/executor
       securityContext:
