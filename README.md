@@ -68,7 +68,7 @@ echo "sa:$token" | base64
 
 * Create a docker secret 
 ```
-$ kubectl -n test create configmap docker-config --from-file=config.json=docker.config.json
+$ kubectl  create configmap docker-config --from-file=config.json=docker.config.json
 ```
 4. Apply tekton yaml
 
