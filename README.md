@@ -38,6 +38,7 @@ $ touch docker.cofig.json
 ```
 * populate with the following data 
 
+
 ```JSON
 {
   "auths": {
