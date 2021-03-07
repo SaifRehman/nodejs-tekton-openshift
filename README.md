@@ -67,6 +67,7 @@ echo "sa:$token" | base64
 ```
 * copy it and paste it in auth 
 
+
 * Create a docker secret 
 ```
 $ kubectl  create configmap docker-config --from-file=config.json=docker.config.json
