@@ -15,8 +15,6 @@ spec:
       - name: imageTag
         description: Tag of the images to be used.
         default: "latest"
-      - name: replaceName
-        description: replace name of all yamls
   steps:
     - name: update-yaml
       image: alpine

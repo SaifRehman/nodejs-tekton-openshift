@@ -6,10 +6,11 @@ spec:
   serviceAccountName: pipeline
   triggers:
   - name: pullrequest-build-and-deploy
+    bindings:
+      - ref: tektonnodejs-build-and-deploy
     template:
       name: tektonnodejs-build-and-deploy
-    bindings:
-    - name: tektonnodejs-build-and-deploy
+
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
