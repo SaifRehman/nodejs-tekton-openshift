@@ -4,6 +4,7 @@ This guide is to run a sample application on openshift cluster using tekton
 
 # Prereq
 
+
 * Install Tekton
 
 1. Navigate to Operator Hub
