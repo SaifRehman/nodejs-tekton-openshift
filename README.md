@@ -38,7 +38,6 @@ $ touch docker.cofig.json
 ```
 * populate with the following data 
 
-
 ```JSON
 {
   "auths": {
@@ -67,7 +66,6 @@ echo "sa:$token" | base64
 ```
 * copy it and paste it in auth 
 
-
 * Create a docker secret 
 ```
 $ kubectl  create configmap docker-config --from-file=config.json=docker.config.json
@@ -84,10 +82,6 @@ $ kubectl apply -f pipelinerun.yaml
 5. Open openshift dashboard and navigate to pipeline and then pipeline run to see the running pipeline
 
 ![1](./1.png)
-
-
-
-
 
 
 
