@@ -66,7 +66,7 @@ spec:
         - /kaniko/executor
       args:
         - --dockerfile=$(inputs.params.pathToDockerFile)
-        - --destination=$(inputs.params.imageUrl):latest
+        - --destination=$(inputs.params.imageUrl):$(inputs.params.imageTag)
         - --context=/workspace/git-source/$(inputs.params.pathToContext)
         - --skip-tls-verify
   volumes:
