@@ -34,7 +34,7 @@ spec:
         - /bin/sh
         - -c
       args:
-        - npm audit
+        - npm audit fix
       workingDir: /workspace/git-source/
     - name: lint
       image: node
