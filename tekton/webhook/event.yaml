@@ -11,16 +11,16 @@ spec:
     template:
       name: tektonnodejs-build-and-deploy
 
-# ---
-# apiVersion: route.openshift.io/v1
-# kind: Route
-# metadata:
-#   labels:
-#     eventlistener: tektonnodejs
-#   name: el-tektonnodejs
-# spec:
-#   port:
-#     targetPort: http-listener
-#   to:
-#     kind: Service
-#     name: el-tektonnodejs
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    eventlistener: tektonnodejs
+  name: el-tektonnodejs
+spec:
+  port:
+    targetPort: http-listener
+  to:
+    kind: Service
+    name: el-tektonnodejs
