@@ -58,7 +58,7 @@ $ secret=$(oc get secret  | grep pipeline-token | head -1 | awk '{print $1}')
 $ token=$(oc get secret $secret -o jsonpath="{.data.token}")
 ```
 ```
-token = $(echo $token | base64 --decode)
+token=$(echo $token | base64 --decode)
 ```
 
 ```
@@ -69,15 +69,15 @@ echo "sa:$token" | base64
 
 * Create a docker secret 
 ```
-$ kubectl  create configmap docker-config --from-file=config.json=docker.config.json
+$ oc create configmap docker-config --from-file=config.json=docker.config.json
 ```
 4. Apply tekton yaml
 
 ```
-$ kubectl apply -f resources.yaml
-$ kubectl apply -f task.yaml
-$ kubectl apply -f pipeline.yaml
-$ kubectl apply -f pipelinerun.yaml
+$ oc apply -f resources.yaml
+$ oc apply -f task.yaml
+$ oc apply -f pipeline.yaml
+$ oc apply -f pipelinerun.yaml
 ```
 
 5. Open openshift dashboard and navigate to pipeline and then pipeline run to see the running pipeline
