@@ -18,7 +18,6 @@ spec:
         description: Url of image repository
       - name: imageTag
         description: Tag to apply to the built image
-        default: "latest"
   steps:
     - name: npm-install
       image: node
@@ -66,7 +65,7 @@ spec:
         - /kaniko/executor
       args:
         - --dockerfile=$(inputs.params.pathToDockerFile)
-        - --destination=$(inputs.params.imageUrl):$(inputs.params.imageTag)
+        - --destination=$(inputs.params.imageUrl):latest
         - --context=/workspace/git-source/$(inputs.params.pathToContext)
         - --skip-tls-verify
   volumes:
