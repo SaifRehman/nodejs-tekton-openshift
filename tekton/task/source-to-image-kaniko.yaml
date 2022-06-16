@@ -36,14 +36,14 @@ spec:
       args:
         - npm audit fix
       workingDir: /workspace/git-source/
-    - name: lint
-      image: node
-      command:
-        - /bin/sh
-        - -c
-      args:
-        - ./node_modules/eslint/bin/eslint.js app.js
-      workingDir: /workspace/git-source/
+    # - name: lint
+    #   image: node
+    #   command:
+    #     - /bin/sh
+    #     - -c
+    #   args:
+    #     - ./node_modules/eslint/bin/eslint.js app.js
+    #   workingDir: /workspace/git-source/
     - name: test
       image: node
       command:
