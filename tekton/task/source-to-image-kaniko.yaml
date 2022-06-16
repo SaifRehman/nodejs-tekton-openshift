@@ -28,14 +28,14 @@ spec:
       args:
         - npm install
       workingDir: /workspace/git-source/
-    - name: npm-audit
-      image: node
-      command:
-        - /bin/sh
-        - -c
-      args:
-        - npm audit fix
-      workingDir: /workspace/git-source/
+    # - name: npm-audit
+    #   image: node
+    #   command:
+    #     - /bin/sh
+    #     - -c
+    #   args:
+    #     - npm audit fix
+    #   workingDir: /workspace/git-source/
     # - name: lint
     #   image: node
     #   command:
