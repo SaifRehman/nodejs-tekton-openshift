@@ -84,6 +84,8 @@ $ kubectl apply -f pipelinerun.yaml
 
 ![1](./1.png)
 
+ew
+
 
 
 
