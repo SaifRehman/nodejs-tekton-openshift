@@ -1,4 +1,4 @@
-FROM node
+FROM openshift/nodejs:16-ubi8
 
 # Create app directory
 WORKDIR /usr/src/app
