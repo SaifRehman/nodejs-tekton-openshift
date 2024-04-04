@@ -8,7 +8,7 @@
     "start": "node app.js"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
     "url": "git+https://github.com/SaifRehman/nodejs-tekton-openshift.git"
   },
   "author": "",
