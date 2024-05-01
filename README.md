@@ -25,17 +25,17 @@ $ cd nodejs-tekton-openshift
 ```
 
 * in ```kubernetes``` folder you have all kubernetes artifacts
-* in ```tekton``` folder you have tekton configuaration 
+* in ```tekton``` folder you have tekton configuration 
 * ```tekton/resources.yaml``` specified git repo and private images repo 
-* ```tekton/task.yaml``` specifies all the tasks, such as build push and deploy. each tasks has specefic steps 
-* ```tekton/pipeline.yaml``` configures pipeline and specifes what tasks to run
+* ```tekton/task.yaml``` specifies all the tasks, such as build push and deploy. each tasks has specific steps 
+* ```tekton/pipeline.yaml``` configures pipeline and specifies what tasks to run
 * ```tekton/pipelinerun.yaml``` Runs the given pipeline 
 
 3. Configure secret 
 
-* Create ```docker.cofig.json```
+* Create ```docker.config.json```
 ```
-$ touch docker.cofig.json
+$ touch docker.config.json
 ```
 * populate with the following data 
 
