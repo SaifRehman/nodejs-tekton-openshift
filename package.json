@@ -19,7 +19,7 @@
   "homepage": "https://github.com/SaifRehman/nodejs-tekton-openshift#readme",
   "dependencies": {
     "express": "^4.17.1"
-  },,
+  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
