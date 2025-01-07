@@ -1,4 +1,4 @@
-FROM node:16.0.0:latest
+FROM node:16.0.0
 
 user root
 # Create app directory
